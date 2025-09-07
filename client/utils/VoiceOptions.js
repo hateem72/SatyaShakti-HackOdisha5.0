@@ -1,6 +1,4 @@
-/**
- * Voice options and configurations for Anonymous Editor
- */
+
 
 export const voiceOptions = {
     male: [
@@ -16,25 +14,15 @@ export const voiceOptions = {
     ]
 };
 
-/**
- * Get voice information by ID
- * @param {string} voiceId - Voice ID to search for
- * @returns {Object} Voice information object
- */
 export const getVoiceById = (voiceId) => {
     const allVoices = [...voiceOptions.male, ...voiceOptions.female];
     return allVoices.find(voice => voice.id === voiceId) || voiceOptions.male[0];
 };
 
-/**
- * Get all available voices as a flat array
- * @returns {Array} All voice options
- */
+
 export const getAllVoices = () => {
     return [...voiceOptions.male, ...voiceOptions.female];
 };
 
-/**
- * Default voice selection
- */
+
 export const DEFAULT_VOICE = 'hi-IN-rahul';

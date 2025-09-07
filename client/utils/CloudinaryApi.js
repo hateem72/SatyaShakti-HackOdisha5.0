@@ -326,43 +326,7 @@ class CloudinaryApi {
 
  
 
-  /**
-   * Create video thumbnail at specific timestamp
-   * @param {Object} uploadResult - Cloudinary upload result
-   * @param {number} timestamp - Time in seconds
-   * @param {number} width - Thumbnail width (optional)
-   * @param {number} height - Thumbnail height (optional)
-   */
-  async createVideoThumbnail(uploadResult, timestamp = 0, width = 320, height = 240) {
-    try {
-      if (!uploadResult || !uploadResult.public_id) {
-        throw new Error('Upload result with public_id is required');
-      }
-
-      const thumbnailUrl = `https://res.cloudinary.com/${this.cloudName}/video/upload/so_${timestamp},w_${width},h_${height},c_fill,f_jpg/${uploadResult.public_id}.jpg`;
-
-      const response = await fetch(thumbnailUrl);
-
-      if (!response.ok) {
-        throw new Error(`Thumbnail creation failed: ${response.status} - ${response.statusText}`);
-      }
-
-      const imageBlob = await response.blob();
-
-      return {
-        url: URL.createObjectURL(imageBlob),
-        blob: imageBlob,
-        downloadUrl: thumbnailUrl,
-        timestamp,
-        width,
-        height
-      };
-    } catch (error) {
-      console.error('Video thumbnail creation error:', error);
-      throw error;
-    }
-  }
-
+ 
   /**
    * Advanced timeline-based processing workflow
    * @param {File} videoFile - Video file to process
