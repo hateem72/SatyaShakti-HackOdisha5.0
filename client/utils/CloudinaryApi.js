@@ -1,7 +1,3 @@
-/**
- * Cloudinary API utility for video processing
- * Handles video uploads and blur effects using Cloudinary's transformation capabilities
- */
 
 class CloudinaryApi {
   constructor() {
